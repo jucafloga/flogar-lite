@@ -1,0 +1,35 @@
+{
+    "name": "flogar/flogar",
+    "description": "Implementación SEE",
+    "keywords": ["xml"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jucafloga",
+            "email": "jucafloga@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/jucafloga/flogar",
+    "type": "library",
+    "require": {
+        "php": ">=5.5.9",
+        "ext-dom": "*",
+        "flogar/xmldsig": "^1.0.1",
+        "flogar/core": "^1.0.1",
+        "flogar/ws": "^1.0.1",
+        "flogar/xml": "^1.0.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.8 < 6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flogar\\": "src/Flogar/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
