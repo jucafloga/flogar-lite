@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Flogar\Factory;
 
@@ -14,28 +15,28 @@ use Flogar\XMLSecLibs\Sunat\SignedXml;
 class FeFactory implements FactoryInterface
 {
     /**
-     * @var SignedXml
+     * @var SignedXml|null
      */
     private $signer;
 
     /**
      * Sender service.
      *
-     * @var SenderInterface
+     * @var SenderInterface|null
      */
     private $sender;
 
     /**
      * Ultimo xml generado.
      *
-     * @var string
+     * @var string|null
      */
     private $lastXml;
 
     /**
      * Xml Builder.
      *
-     * @var BuilderInterface
+     * @var BuilderInterface|null
      */
     private $builder;
 
@@ -44,7 +45,7 @@ class FeFactory implements FactoryInterface
      *
      * @return BuilderInterface
      */
-    public function getBuilder()
+    public function getBuilder(): ?BuilderInterface
     {
         return $this->builder;
     }
@@ -54,7 +55,7 @@ class FeFactory implements FactoryInterface
      *
      * @return SenderInterface
      */
-    public function getSender()
+    public function getSender(): ?SenderInterface
     {
         return $this->sender;
     }
@@ -66,7 +67,7 @@ class FeFactory implements FactoryInterface
      *
      * @return FeFactory
      */
-    public function setSender($sender)
+    public function setSender(?SenderInterface $sender): self
     {
         $this->sender = $sender;
 
@@ -80,7 +81,7 @@ class FeFactory implements FactoryInterface
      *
      * @return FeFactory
      */
-    public function setBuilder($builder)
+    public function setBuilder(?BuilderInterface $builder): self
     {
         $this->builder = $builder;
 
@@ -90,7 +91,7 @@ class FeFactory implements FactoryInterface
     /**
      * @return SignedXml
      */
-    public function getSigner()
+    public function getSigner(): ?SignedXml
     {
         return $this->signer;
     }
@@ -100,7 +101,7 @@ class FeFactory implements FactoryInterface
      *
      * @return FeFactory
      */
-    public function setSigner($signer)
+    public function setSigner(?SignedXml $signer): self
     {
         $this->signer = $signer;
 
@@ -114,7 +115,7 @@ class FeFactory implements FactoryInterface
      *
      * @return BaseResult
      */
-    public function send(DocumentInterface $document)
+    public function send(DocumentInterface $document): ?BaseResult
     {
         $xml = $this->getXmlSigned($document);
 
@@ -122,7 +123,7 @@ class FeFactory implements FactoryInterface
     }
 
 
-    public function sendXml($name, $xml)
+    public function sendXml(?string $name, ?string $xml): ?BaseResult
     {
         return $this->sender->send($name, $xml);
     }
@@ -132,7 +133,7 @@ class FeFactory implements FactoryInterface
      *
      * @return string
      */
-    public function getLastXml()
+    public function getLastXml(): ?string
     {
         return $this->lastXml;
     }
@@ -142,7 +143,7 @@ class FeFactory implements FactoryInterface
      *
      * @return string
      */
-    public function getXmlSigned(DocumentInterface $document)
+    public function getXmlSigned(DocumentInterface $document): ?string
     {
         $xml = $this->builder->build($document);
 
