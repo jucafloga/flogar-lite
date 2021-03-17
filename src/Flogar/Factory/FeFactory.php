@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Flogar\Factory;
@@ -127,7 +128,7 @@ class FeFactory implements FactoryInterface
     {
         return $this->sender->send($name, $xml);
     }
-    
+
     /**
      * Get Last XML Signed.
      *

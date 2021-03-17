@@ -1,28 +1,22 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Flogar;
 
 use DOMDocument;
 use Exception;
-use Flogar\Builder\BuilderInterface;
 use Flogar\Factory\FeFactory;
 use Flogar\Factory\WsSenderResolver;
 use Flogar\Factory\XmlBuilderResolver;
 use Flogar\Model\DocumentInterface;
 use Flogar\Model\Response\StatusResult;
-use Flogar\Model\Summary\Summary;
-use Flogar\Model\Voided\Reversion;
-use Flogar\Model\Voided\Voided;
-use Flogar\Services\SenderInterface;
 use Flogar\Validator\ErrorCodeProviderInterface;
 use Flogar\Ws\Reader\XmlFilenameExtractor;
 use Flogar\Ws\Reader\XmlReader;
 use Flogar\Ws\Resolver\XmlTypeResolver;
-use Flogar\Ws\Services\BillSender;
 use Flogar\Ws\Services\ExtService;
 use Flogar\Ws\Services\SoapClient;
-use Flogar\Ws\Services\SummarySender;
 use Flogar\XMLSecLibs\Sunat\SignedXml;
 
 /**
@@ -140,9 +134,9 @@ class See
      *
      * @param DocumentInterface $document
      *
-     * @return string
+     * @return null|string
      */
-    public function getXmlSigned(DocumentInterface $document)
+    public function getXmlSigned(DocumentInterface $document): ?string
     {
         $buildResolver = new XmlBuilderResolver($this->options);
 
@@ -156,9 +150,9 @@ class See
      *
      * @param DocumentInterface $document
      *
-     * @return Model\Response\BaseResult
+     * @return Model\Response\BaseResult|null
      */
-    public function send(DocumentInterface $document)
+    public function send(DocumentInterface $document): ?Model\Response\BaseResult
     {
         $this->configureFactory(get_class($document));
 
@@ -172,9 +166,9 @@ class See
      * @param string $name Xml Name
      * @param string $xml  Xml Content
      *
-     * @return Model\Response\BaseResult
+     * @return Model\Response\BaseResult|null
      */
-    public function sendXml(string $type, string $name, string $xml)
+    public function sendXml(string $type, string $name, string $xml): ?Model\Response\BaseResult
     {
         $this->configureFactory($type);
 
@@ -186,11 +180,11 @@ class See
      *
      * @param string $xmlContent
      *
-     * @return Model\Response\BaseResult
+     * @return Model\Response\BaseResult|null
      *
      * @throws Exception
      */
-    public function sendXmlFile(string $xmlContent)
+    public function sendXmlFile(string $xmlContent): ?Model\Response\BaseResult
     {
         $doc = new DOMDocument();
         $doc->loadXML($xmlContent);
