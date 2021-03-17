@@ -19,9 +19,6 @@
         "flogar/ws": "^3.0",
         "flogar/xml": "^3.0"
     },
-    "require-dev": {
-        "phpunit/phpunit": ">=4.8 < 6.0"
-    },
     "autoload": {
         "psr-4": {
             "Flogar\\": "src/Flogar/"
