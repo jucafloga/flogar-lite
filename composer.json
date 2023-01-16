@@ -1,7 +1,7 @@
 {
-    "name": "flogar/flogar",
-    "description": "Implementación SEE",
-    "keywords": ["xml"],
+    "name": "flogar/flogar-lite",
+    "description": "Implementación lite SEE de Flogar",
+    "keywords": ["flogar","xml"],
     "license": "MIT",
     "authors": [
         {
@@ -9,19 +9,24 @@
             "email": "jucafloga@outlook.com"
         }
     ],
-    "homepage": "https://github.com/jucafloga/flogar",
+    "homepage": "https://github.com/jucafloga/flogar-lite",
     "type": "library",
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.4",
         "ext-dom": "*",
-        "flogar/xmldsig": "^3.0",
-        "flogar/core": "^3.0",
-        "flogar/ws": "^3.0",
-        "flogar/xml": "^3.0"
+        "flogar/xmldsig": "^5.0",
+        "flogar/core": "^5.0",
+        "flogar/ws": "^5.0",
+        "flogar/xml": "^5.0"
     },
     "autoload": {
         "psr-4": {
             "Flogar\\": "src/Flogar/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "5.0-dev"
         }
     }
 }
