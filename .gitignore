@@ -1,5 +1,4 @@
-/nbproject/private/
+/nbproject
 /vendor
 composer.lock
-#PhpStorm
 .idea/
