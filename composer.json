@@ -17,7 +17,7 @@
         "flogar/xmldsig": "^5.0",
         "flogar/core": "^5.0",
         "flogar/ws": "^5.0",
-        "flogar/xml": "^5.1"
+        "flogar/xml": "^5.0.1"
     },
     "autoload": {
         "psr-4": {
