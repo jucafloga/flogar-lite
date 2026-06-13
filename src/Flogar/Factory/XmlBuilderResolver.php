@@ -39,6 +39,6 @@ class XmlBuilderResolver
 
         $className = substr(strrchr($docClass, '\\'), 1);
 
-        return "Flogar\\Xml\\Builder\\${className}Builder";
+        return "Flogar\\Xml\\Builder\\" . $className . "Builder";
     }
 }
